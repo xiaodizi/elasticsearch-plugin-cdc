@@ -3,11 +3,12 @@
 这是目前没有在生产环境验证的插件，使用请慎重。
 
 elastisearch 7.9.3 版本验证通过
+elastisearch 7.12.1 版本验证通过
 
 其他版本不敢保证是否能够正常使用
 
 
-# elasticsearch 7.12.1 版本安装
+# elasticsearch 7.12.1 版本安装特殊说明
 
 1.不要使用内置jdk，需要单独安装jdk，配置
 
