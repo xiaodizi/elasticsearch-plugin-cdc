@@ -5,6 +5,9 @@
 elastisearch 7.9.3 版本验证通过
 elastisearch 7.12.1 版本验证通过
 
+
+不同版本的 elasticsearch 对应不同版本的分支。
+
 其他版本不敢保证是否能够正常使用
 
 
