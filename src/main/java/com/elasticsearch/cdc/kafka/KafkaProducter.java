@@ -34,29 +34,34 @@ public class KafkaProducter {
         logger.warn("topic:"+kafkaTopic);
         logger.warn("--------------------------");
 
-        Properties conf = new Properties();
-        conf.setProperty(ProducerConfig.ACKS_CONFIG, "0");
-        conf.setProperty(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaNodes);
-        conf.setProperty(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
-        conf.setProperty(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
-        Thread.currentThread().setContextClassLoader(null);
-        KafkaProducer<String, String> producer = new KafkaProducer<String,String>(conf);
+        if (kafkaTopic != null && kafkaNodes !=null) {
 
-        ProducerRecord<String, String> msg = new ProducerRecord<String, String>(kafkaTopic, indexName, JSON.toJSONString(dto));
-        Future<RecordMetadata> send = producer.send(msg, new Callback() {
-            @Override
-            public void onCompletion(RecordMetadata metadata, Exception exception) {
-                if (exception != null) {
-                    logger.error("回调:", exception);
+            Properties conf = new Properties();
+            conf.setProperty(ProducerConfig.ACKS_CONFIG, "0");
+            conf.setProperty(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaNodes);
+            conf.setProperty(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
+            conf.setProperty(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
+            Thread.currentThread().setContextClassLoader(null);
+            KafkaProducer<String, String> producer = new KafkaProducer<String, String>(conf);
+
+            ProducerRecord<String, String> msg = new ProducerRecord<String, String>(kafkaTopic, indexName, JSON.toJSONString(dto));
+            Future<RecordMetadata> send = producer.send(msg, new Callback() {
+                @Override
+                public void onCompletion(RecordMetadata metadata, Exception exception) {
+                    if (exception != null) {
+                        logger.error("回调:", exception);
+                    }
                 }
-            }
-        });
-
-
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+            });
+        }else {
+            logger.warn("kafka 节点配置未配置");
         }
+
+
+//        try {
+//            Thread.sleep(1000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
     }
 }
