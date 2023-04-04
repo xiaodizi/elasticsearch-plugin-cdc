@@ -2,9 +2,13 @@
 
 这是目前没有在生产环境验证的插件，使用请慎重。
 
-elastisearch 7.9.3 版本验证通过
+elasticsearch 7.9.3 版本验证通过
 
-elastisearch 7.12.1 版本验证通过
+elasticsearch 7.12.1 版本验证通过
+
+elasticsearch 8.6.0 lz4-java-1.8.0.jar 冲突，kafka客户端使用了这个包，ES服务端也使用了这个包未解决 
+
+
 
 
 不同版本的 elasticsearch 对应不同版本的分支。
