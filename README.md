@@ -4,7 +4,11 @@
 
 elastisearch 7.9.3 版本验证通过
 
-elastisearch 7.12.1 版本验证通过
+elastisearch 7.12.1 版本验证通过 
+
+又向上升级了几个版本做尝试，不过高版本的 elasticsearch服务端使用了 lz4-java-1.8.0.jar 的里边的压缩算法，而 kafka的客户端也使用了lz4-java-1.8.0.jar里的压缩算法，所以包冲突了。服务端里的包的无法排除掉，就把kafka客户端里的包排除掉了，但是kafka反而不正常了。
+
+在考虑高版本是不是应该把数据丢到别的地方去。
 
 
 不同版本的 elasticsearch 对应不同版本的分支。
