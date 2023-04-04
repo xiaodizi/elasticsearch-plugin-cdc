@@ -10,7 +10,7 @@
     <description>Elasticsearch plugin for CDC </description>
 
     <properties>
-        <elasticsearch.version>8.6.0</elasticsearch.version>
+        <elasticsearch.version>7.17.9</elasticsearch.version>
         <maven.compiler.target>1.8</maven.compiler.target>
         <elasticsearch.assembly.descriptor>${project.basedir}/src/main/assemblies/plugin.xml</elasticsearch.assembly.descriptor>
         <elasticsearch.plugin.name>elasticsearch-plugin-cdc</elasticsearch.plugin.name>
